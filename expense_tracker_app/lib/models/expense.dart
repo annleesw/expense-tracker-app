@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:uuid/uuid.dart';
 import 'package:intl/intl.dart';
 
@@ -7,14 +6,12 @@ final formatter = DateFormat.yMd();
 
 const uuid = Uuid();
 
-enum Category {
-  food, leisure, travel, work
-}
+enum Category {food, leisure, travel, work}
 
 const categoryIcons = {
   Category.food: Icons.lunch_dining,
   Category.travel: Icons.flight_takeoff,
-  Category.leisure: Icons.movie,
+  Category.leisure: Icons.shopping_bag_sharp,
   Category.work: Icons.work,
 };
 
@@ -45,9 +42,9 @@ class ExpenseBucket {
   });
 
   ExpenseBucket.forCategory(List<Expense> allExpenses, this.category) //filter out expenses in a particular category
-  : expenses = allExpenses
-    .where((expense) => expense.category == category)
-    .toList(); 
+    : expenses = allExpenses
+      .where((expense) => expense.category == category)
+      .toList(); 
 
 
   final Category category; 

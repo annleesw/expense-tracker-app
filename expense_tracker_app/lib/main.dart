@@ -1,4 +1,6 @@
+// responsive app: an app where the layout and styling adjusts to the available space and mode
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:expense_tracker_app/widgets/expenses.dart';
 
@@ -12,6 +14,13 @@ var kDarkColorScheme = ColorScheme.fromSeed(
 // ThemeData.dark().copyWith(
 
 void main() {
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   ]).then((fn) {
+
+  //   });
+  // to fix app as portrait up orientation
+
   runApp(
     MaterialApp(
       darkTheme: ThemeData.dark().copyWith( //dark theme

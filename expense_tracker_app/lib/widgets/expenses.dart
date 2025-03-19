@@ -1,6 +1,6 @@
-import 'package:expense_tracker_app/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 
+import 'package:expense_tracker_app/widgets/new_expense.dart';
 import 'package:expense_tracker_app/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker_app/models/expense.dart';
 import 'package:expense_tracker_app/widgets/charts/chart.dart';
@@ -9,7 +9,7 @@ class Expenses extends StatefulWidget {
   const Expenses({super.key});
 
   @override
-  State<StatefulWidget> createState() {
+  State<Expenses> createState() {
     return _ExpensesState();
   }
 }
@@ -17,24 +17,23 @@ class Expenses extends StatefulWidget {
 class _ExpensesState extends State<Expenses> {
   final List<Expense> _registeredExpenses = [
     Expense(
-      title: 'Flutter course', 
-      amount: 14.99, 
-      date: DateTime.now(), 
-      category: Category.work
+      title: 'Flutter Course',
+      amount: 19.99,
+      date: DateTime.now(),
+      category: Category.work,
     ),
     Expense(
-      title: 'Cinema', 
-      amount: 15.69, 
-      date: DateTime.now(), 
-      category: Category.leisure
+      title: 'Cinema',
+      amount: 15.69,
+      date: DateTime.now(),
+      category: Category.leisure,
     ),
   ];
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
-      useSafeArea: true,
       isScrollControlled: true,
-      context: context, 
+      context: context,
       builder: (ctx) => NewExpense(onAddExpense: _addExpense),
     );
   }
@@ -69,9 +68,6 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-
-
     Widget mainContent = const Center(
       child: Text('No expenses found. Start adding some!'),
     );
@@ -93,22 +89,14 @@ class _ExpensesState extends State<Expenses> {
           ),
         ],
       ),
-      body: width < 600 ? Column(
+      body: Column(
         children: [
           Chart(expenses: _registeredExpenses),
           Expanded(
             child: mainContent,
           ),
         ],
-      ) : Row(
-        children: [
-          Expanded( //constrains the child to only take as much width as available
-            child: Chart(expenses: _registeredExpenses),
-          ),
-          Expanded(
-            child: mainContent,
-          ),
-        ],)
+      ),
     );
   }
 }
